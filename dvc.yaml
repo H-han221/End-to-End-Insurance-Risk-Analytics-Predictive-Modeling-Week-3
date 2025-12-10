@@ -2,7 +2,15 @@ stages:
   preprocess_data:
     cmd: python src/data/preprocess.py
     deps:
-    - data/MachineLearningRating_v3.txt
-    - src/data/preprocess.py
+      - data/MachineLearningRating_v3.txt
+      - src/data/preprocess.py
     outs:
-    - data/MachineLearningRating_clean.csv
+      - data/MachineLearningRating_clean.csv
+
+  hypothesis_testing:
+    cmd: python src/analysis/hypothesis_tests.py
+    deps:
+      - data/MachineLearningRating_clean.csv
+      - src/analysis/hypothesis_tests.py
+    outs:
+      - reports/hypothesis_results.txt

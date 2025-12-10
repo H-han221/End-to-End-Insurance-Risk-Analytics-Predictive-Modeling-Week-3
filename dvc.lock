@@ -1,0 +1,34 @@
+schema: '2.0'
+stages:
+  preprocess_data:
+    cmd: python src/data/preprocess.py
+    deps:
+    - path: data/MachineLearningRating_v3.txt
+      hash: md5
+      md5: f6b7009b68ae21372b7deca9307fbb23
+      size: 529363713
+    - path: src/data/preprocess.py
+      hash: md5
+      md5: 8e67f7d9498af5b8641f596d80f31ac3
+      size: 973
+    outs:
+    - path: data/MachineLearningRating_clean.csv
+      hash: md5
+      md5: 78e5cee12e269875f152df17583b48ed
+      size: 527427659
+  hypothesis_testing:
+    cmd: python src/analysis/hypothesis_tests.py
+    deps:
+    - path: data/MachineLearningRating_clean.csv
+      hash: md5
+      md5: 78e5cee12e269875f152df17583b48ed
+      size: 527427659
+    - path: src/analysis/hypothesis_tests.py
+      hash: md5
+      md5: 5b4f56485e1cd5ae489d72be5360be8e
+      size: 3229
+    outs:
+    - path: reports/hypothesis_results.txt
+      hash: md5
+      md5: d460dc02351ecad65f58bf2ec0a027e6
+      size: 945
